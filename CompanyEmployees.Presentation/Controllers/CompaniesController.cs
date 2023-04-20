@@ -43,6 +43,15 @@ public class CompaniesController : ControllerBase
         return CreatedAtRoute("CompanyById", new { id = createdCompany.Id },createdCompany);
     }
 
+    [HttpPut("{id:guid}")]
+    public IActionResult UpdateCompany(Guid id, [FromBody] CompanyForUpdateDto company)
+    {
+        if (company is null)
+            return BadRequest("CompanyForUpdateDto object is null");
+        _service.CompanyService.UpdateCompany(id, company, trackChanges: true);
+        return NoContent();
+    }
+
     [HttpGet("collection/({ids})", Name = "CompanyCollection")]
     public IActionResult GetCompanyCollection(IEnumerable<Guid> ids)
     {
@@ -58,6 +67,8 @@ public class CompaniesController : ControllerBase
         return CreatedAtRoute("CompanyCollection", new { result.ids },
         result.companies);
     }
+
+
 
     [HttpDelete("{id:guid}")]
     public IActionResult DeleteCompany(Guid id)
