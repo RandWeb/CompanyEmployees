@@ -18,7 +18,7 @@ public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     bool trackChanges) => !trackChanges ?
     RepositoryContext.Set<T>().Where(expression).AsNoTracking() :
     RepositoryContext.Set<T>().Where(expression);
-    public void Create(T entity) => RepositoryContext.Set<T>().Add(entity);
+    public async Task Create(T entity) => RepositoryContext.Set<T>().AddAsync(entity);
     public void Update(T entity) => RepositoryContext.Set<T>().Update(entity);
     public void Delete(T entity) => RepositoryContext.Set<T>().Remove(entity);
 }
