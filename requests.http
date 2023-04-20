@@ -1,0 +1,60 @@
+
+
+GET http://localhost:5000/api/companies 
+#Accept text/xml
+#Accept text/css 406
+#Accept text/csv
+###
+
+GET http://localhost:5000/api/companies/3d490a70-94ce-4d15-9494-5248280c2ce3
+###
+// not found 
+GET http://localhost:5000/api/companies/3d490a70-94ce-4d15-9494-5248280c2ce2
+
+###
+GET https://localhost:5001/api/companies/87d9a418-ec34-4720-a1ba-fec046d14703/employees
+
+###
+//invalid uri
+GET https://localhost:5001/api/companies/c9d4c053-49b6-410c-bc78-2d54a9991873/employees
+
+###
+
+GET https://localhost:5001/api/companies/c9d4c053-49b6-410c-bc78-2d54a9991870/employees/86dba8c0-d178-41e7-938c-ed49778fb52a
+
+###
+// invalid uri
+GET https://localhost:5001/api/companies/c9d4c053-49b6-410c-bc78-2d54a9991870/employees/86dba8c0-d178-41e7-938c-ed49778fb52a
+
+###
+
+POST https://localhost:5001/api/companies http/1.1
+Content-Type: application/json
+
+{
+  "name":"mehrdad",
+  "address":"gachsaaran city",
+  "country":"iran",
+  "employees":[
+    {
+      "name":"alireza",
+      "age":"27",
+      "position":"frontend developer"
+    },
+    {
+      "name":"yasin",
+      "age":"29",
+      "position":"farmer"
+    }
+  ]
+}
+
+###
+POST https://localhost:5001/api/companies/4b1668c7-2230-422d-99de-6f6d1bad96b6/employees http/1.1
+Content-Type: application/json
+
+{
+  "name":"mehrdad",
+  "age":"27",
+  "position":"developer"
+}
