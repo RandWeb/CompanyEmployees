@@ -14,6 +14,8 @@ internal class CompanyConfiguration : IEntityTypeConfiguration<Company>
 
         builder.Property(x => x.Address).IsRequired().HasMaxLength(60);
 
+        builder.HasMany(x => x.Employees).WithOne().OnDelete(DeleteBehavior.Cascade);
+
         builder.HasData
         (
         new Company
@@ -40,7 +42,6 @@ internal class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
     {
         builder.Property(x => x.Id).ValueGeneratedNever();
         builder.Property(x => x.Id).IsRequired();
-
         builder.HasData
                         (
                         new Employee

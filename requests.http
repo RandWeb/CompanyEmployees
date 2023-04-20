@@ -58,3 +58,8 @@ Content-Type: application/json
   "age":"27",
   "position":"developer"
 }
+
+###
+DELETE https://localhost:5001/api/companies/0AD5B971-FF51-414D-AF01-34187E407557
+
+###

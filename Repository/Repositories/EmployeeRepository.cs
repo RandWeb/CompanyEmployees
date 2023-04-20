@@ -18,4 +18,6 @@ public IEnumerable<Employee> GetEmployees(Guid companyId, bool trackChanges) => 
         employee.CompanyId = companyId;
         Create(employee);
     }
+
+    public void DeleteEmployee(Employee employee) => Delete(employee);
 }
