@@ -63,3 +63,12 @@ Content-Type: application/json
 DELETE https://localhost:5001/api/companies/0AD5B971-FF51-414D-AF01-34187E407557
 
 ###
+
+PUT https://localhost:5001/api/companies/C9D4C053-49B6-410C-BC78-2D54A9991870/employees/80ABBCA8-664D-4B20-B5DE-024705497D4A
+Content-Type: application/json
+
+{
+    "name": "mehrdad",
+    "age": 10000,
+    "position": "Backend developer"
+}
